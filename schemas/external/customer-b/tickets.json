@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Customer B Tickets External Schema",
+  "type": "object",
+  "required": ["type", "id", "title", "status", "priorityLevel", "assigneeId"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "ticket",
+      "description": "Record type identifier"
+    },
+    "id": {
+      "type": ["string", "null"],
+      "description": "Ticket unique identifier"
+    },
+    "title": {
+      "type": ["string", "null"],
+      "description": "Ticket title"
+    },
+    "status": {
+      "type": "string",
+      "description": "Ticket status"
+    },
+    "priorityLevel": {
+      "type": "string",
+      "enum": ["Low", "Medium", "High", "Critical"],
+      "description": "Ticket priority level"
+    },
+    "assigneeId": {
+      "type": ["integer", "null"],
+      "description": "Assigned user ID"
+    },
+    "consumer": {
+      "type": "string",
+      "description": "Processing consumer identifier"
+    },
+    "processedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when message was processed"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+aiohttp
+aiokafka
+kafka-python
+requests
+jsonschema
+pytest

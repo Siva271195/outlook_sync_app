@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Customer A Users External Schema",
+  "type": "object",
+  "required": ["id", "fullName", "email", "status"],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "User unique identifier"
+    },
+    "fullName": {
+      "type": "string",
+      "description": "User's full name"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "User's email address"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "inactive"],
+      "description": "User account status"
+    },
+    "consumer": {
+      "type": "string",
+      "description": "Processing consumer identifier"
+    },
+    "processedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when message was processed"
+    }
+  },
+  "additionalProperties": false
+}

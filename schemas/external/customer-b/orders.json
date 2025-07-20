@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Customer B Orders External Schema",
+  "type": "object",
+  "required": ["type", "orderId", "userId", "amount", "currency", "status"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "order",
+      "description": "Record type identifier"
+    },
+    "orderId": {
+      "type": ["string", "null"],
+      "description": "Order unique identifier"
+    },
+    "userId": {
+      "type": ["integer", "null"],
+      "description": "User who placed the order"
+    },
+    "amount": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Order amount"
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "Currency code (ISO 4217)"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "paid", "cancelled", "refunded"],
+      "description": "Order status"
+    },
+    "placedAt": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "When order was placed"
+    },
+    "consumer": {
+      "type": "string",
+      "description": "Processing consumer identifier"
+    },
+    "processedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when message was processed"
+    }
+  },
+  "additionalProperties": false
+}

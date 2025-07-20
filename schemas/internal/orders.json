@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Internal Orders Schema",
+  "type": "object",
+  "required": ["event_type", "table", "primary_key"],
+  "properties": {
+    "event_type": {
+      "type": "string",
+      "enum": ["INSERT", "UPDATE", "DELETE"]
+    },
+    "table": {
+      "type": "string",
+      "const": "orders"
+    },
+    "primary_key": {
+      "type": "object",
+      "required": ["order_id"],
+      "properties": {
+        "order_id": {"type": "string"}
+      }
+    },
+    "before": {
+      "type": "object",
+      "properties": {
+        "order_id": {"type": "string"},
+        "user_id": {"type": "integer"},
+        "amount": {"type": "number"},
+        "currency": {"type": "string"},
+        "status": {"type": "string"}
+      }
+    },
+    "after": {
+      "type": "object",
+      "properties": {
+        "order_id": {"type": "string"},
+        "user_id": {"type": "integer"},
+        "amount": {"type": "number"},
+        "currency": {"type": "string"},
+        "status": {"type": "string"}
+      }
+    }
+  },
+  "anyOf": [
+    {
+      "properties": {
+        "event_type": {"const": "INSERT"}
+      },
+      "required": ["after"]
+    },
+    {
+      "properties": {
+        "event_type": {"const": "UPDATE"}
+      },
+      "required": ["before", "after"]
+    },
+    {
+      "properties": {
+        "event_type": {"const": "DELETE"}
+      },
+      "required": ["before"]
+    }
+  ]
+}

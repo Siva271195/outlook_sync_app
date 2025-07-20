@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Customer A Tickets External Schema",
+  "type": "object",
+  "required": ["ticketId", "title", "status", "assignee"],
+  "properties": {
+    "ticketId": {
+      "type": ["string", "null"],
+      "description": "Ticket unique identifier"
+    },
+    "title": {
+      "type": ["string", "null"],
+      "description": "Ticket title"
+    },
+    "status": {
+      "type": "string",
+      "description": "Ticket status"
+    },
+    "assignee": {
+      "type": ["integer", "null"],
+      "description": "Assigned user ID"
+    },
+    "consumer": {
+      "type": "string",
+      "description": "Processing consumer identifier"
+    },
+    "processedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when message was processed"
+    }
+  },
+  "additionalProperties": false
+}
