@@ -84,14 +84,14 @@ class MockDynamoDBClient:
             self.load_data() 
             table_name = self.get_table_name(customer_name)
             table_data = self.tables.get(table_name, {})
-            print(f"{customer_name} has {len(table_data)} total messages, start_offset={start_offset}")
+            # print(f"{customer_name} has {len(table_data)} total messages, start_offset={start_offset}")
             pending_messages = []
             for offset, item in sorted(table_data.items()):
                 if offset > start_offset and item['status'] == 'pending':
                     pending_messages.append(item)
                     if len(pending_messages) >= limit:
                         break
-            print(f" {len(pending_messages)} pending messages for {customer_name}")
+            # print(f" {len(pending_messages)} pending messages for {customer_name}")
             return pending_messages
             
         except Exception as e:
